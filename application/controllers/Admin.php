@@ -113,7 +113,5 @@ class Admin extends CI_Controller
             'tgl_upload' => time(),
             'thumbnail' => $this->_uploadImage()
         ];
-
-        
     }
 }

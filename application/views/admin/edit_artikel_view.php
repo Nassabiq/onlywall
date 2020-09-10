@@ -13,8 +13,9 @@
             <?php $this->load->view("template/top"); ?>
             <!-- End of Topbar -->
             <div class="container">
-                <h5 class="ml-2" style="color:black;">Tambah Artikel</h5>
+                <h5 class="ml-2" style="color:black;">Edit Artikel</h5>
                 <?= form_open_multipart('Admin/add_artikel_proses'); ?>
+                <input type="hidden" name="id_artikel" value="">
                 <div class="row">
                     <div class="col-4">
                         <?php

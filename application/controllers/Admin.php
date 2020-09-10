@@ -25,6 +25,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('Artikel_m');
+        $this->load->helper('text');
     }
 
     public function index()
@@ -42,11 +43,13 @@ class Admin extends CI_Controller
             $this->load->view('admin/dashboard_view', $data);
         }
     }
+
     public function artikel()
     {
         $data = [
             'title' => "Article Page | Only Wall",
-            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+            'artikel_post' => $this->Artikel_m->getArtikel()
         ];
 
         if (!$this->session->userdata('email')) {
@@ -70,26 +73,22 @@ class Admin extends CI_Controller
         redirect('Admin/artikel');
     }
 
-    public function add_artikel_view()
+    public function add_artikel()
     {
         $data = [
             'title' => "Tambah Artikel | Only Wall",
             'kategori' => $this->Artikel_m->getKategori(),
-            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
         ];
-
         if (!$this->session->userdata('email')) {
-            # code...
             redirect('OwLogin');
         } else {
-            # code...
             $this->load->view('admin/add_artikel_view', $data);
         }
     }
-    function _uploadImage()
+    public function add_artikel_proses()
     {
-
-        $image_name = time() . $_FILES["userfiles"]['name'];
+        $image_name = date('Ymd') . $_FILES["thumbnail"]['name'];
 
         $config['upload_path'] =  './upload/thumbnails/';
         $config['allowed_types'] = 'gif|jpg|jpeg|png';
@@ -98,20 +97,74 @@ class Admin extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('thumbnails')) {
-            # code...
-            return $this->upload->data("file_name");
+        if (!$this->upload->do_upload('thumbnail')) {
+            // $error = array('error' => $this->upload->display_errors());
+            // $this->load->view('admin/add_artikel_view', $error);
+            echo "gagal";
+        } else {
+            $judul_artikel = htmlspecialchars($this->input->post('judul_artikel', true));
+            $konten = htmlspecialchars($this->input->post('konten'));
+            $id_kategori = $this->input->post('id_kategori');
+            $tgl_upload = date('dmY');
+            $thumbnail = $this->upload->data('file_name');
+
+            $this->db->insert('artikel_post', array(
+                'judul_artikel' => $judul_artikel,
+                'konten' => $konten,
+                'id_kategori' => $id_kategori,
+                'tgl_upload' => $tgl_upload,
+                'thumbnail' => $thumbnail
+            ));
+            $this->session->set_flashdata('message', '<div style="font-size: 10pt;" class="text-sm-left text-success alert alert-success" role="alert" >Artikel Berhasil ditambahkan!</div>');
+            redirect('Admin/add_artikel');
         }
-        return "default.jpg";
     }
-    public function add_artikel()
+
+    public function edit_artikel()
     {
         $data = [
-            'judul_artikel' => htmlspecialchars($this->input->post('judul_artikel', true)),
-            'konten' => htmlspecialchars($this->input->post('konten', true)),
-            'id_kategori' => htmlspecialchars($this->input->post('id_kategori'), true),
-            'tgl_upload' => time(),
-            'thumbnail' => $this->_uploadImage()
+            'title' => "Edit Artikel | Only Wall",
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
         ];
+
+        if (!$this->session->userdata('email')) {
+            # code...
+            redirect('OwLogin');
+        } else {
+            # code...
+            $this->load->view('admin/edit_artikel_view', $data);
+        }
+    }
+
+    public function product()
+    {
+        $data = [
+            'title' => "Product Page | Only Wall",
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
+        ];
+
+        if (!$this->session->userdata('email')) {
+            # code...
+            redirect('OwLogin');
+        } else {
+            # code...
+            $this->load->view('admin/product_view', $data);
+        }
+    }
+
+    public function add_product()
+    {
+        $data = [
+            'title' => "Add Product | Only Wall",
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
+        ];
+
+        if (!$this->session->userdata('email')) {
+            # code...
+            redirect('OwLogin');
+        } else {
+            # code...
+            $this->load->view('admin/add_product_view', $data);
+        }
     }
 }

@@ -12,17 +12,22 @@
         <div id="content">
             <?php $this->load->view("template/top"); ?>
             <div class="container">
-                <h3 class="ml-2">Artikel</h3>
+                <h3 class="ml-2" style="color: black;">Artikel</h3>
 
                 <!-- Modal -->
                 <!-- Button trigger modal -->
-                <div class="col-6">
-                    <?php
-                    echo $this->session->flashdata('message');
-                    ?>
-                    <button type="button" class=" m-0 btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
-                        Add Category
+                <?php
+                echo $this->session->flashdata('message');
+                ?>
+                <div class="container d-flex justify-content-end mx-2">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                        <i class="fa fa-fw fa-plus" style="vertical-align: middle;" aria-hidden="true"></i>
+                        Tambah Kategori
                     </button>
+                    <a type="button" href="<?= base_url('Admin/add_artikel'); ?>" class="mx-2 btn btn-success btn-sm">
+                        <i class="fa fa-fw fa-plus" style="vertical-align: middle;" aria-hidden="true"></i>
+                        Tambah Artikel
+                    </a>
                 </div>
 
                 <!-- Modal -->
@@ -38,17 +43,51 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <input type="text" name="kategori" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kategori...">
+                                        <input type="text" name="kategori" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kategori...">
                                     </div>
                                     <div class="ok d-flex justify-content-end">
-                                        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-sm btn-secondary mr-2" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">Save changes</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
+
+                <!-- List Artikel -->
+                <div class="col mt-4">
+                    <table class="table table-hover" style="table-layout: fixed; width: 100%;">
+                        <thead class="bg-warning text-white">
+                            <tr>
+                                <th style="width: 3%;">No</th>
+                                <th style="width: 20%;">Judul</th>
+                                <th style="width: 30%;">Konten</th>
+                                <th style="width: 15%;">Kategori</th>
+                                <th style="width: 15%;">Tgl Publikasi</th>
+                                <th style="width: 15%;">Action</th>
+
+                            </tr>
+                        </thead>
+                        <?php $a = 1; ?>
+                        <tbody class="table-bordered" style="background-color: #e6e6e6; color: black;">
+                            <?php foreach ($artikel_post as $row) : ?>
+                                <tr>
+                                    <th scope="row"><?= $a++; ?></th>
+                                    <td><?= $row->judul_artikel; ?></td>
+                                    <td style="width: 10%;" class="text-wrap"><?= htmlspecialchars_decode($row->konten); ?></td>
+                                    <td><?= $row->kategori; ?></td>
+                                    <td><?= $row->tgl_upload; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('Admin/edit_artikel/') . $row->id_artikel; ?>" class="btn btn-sm btn-primary"> Edit </a>
+                                        <a href="" class="btn btn-sm btn-danger"> <i class="fa fa-fw fa-trash" aria-hidden="true"></i> </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
             <!-- End of Topbar -->
@@ -69,5 +108,8 @@
 <script>
     $("#navbar-user").remove();
     $("body").attr("id", "page-top");
+
+    const tex = $("#text");
+    $.parseHTML(tex);
 </script>
 <?php $this->load->view('template/body_bawah') ?>

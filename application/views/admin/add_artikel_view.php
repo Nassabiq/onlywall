@@ -8,13 +8,14 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
+
         <!-- Main Content -->
         <div id="content">
             <?php $this->load->view("template/top"); ?>
             <!-- End of Topbar -->
             <div class="container">
                 <h5 class="ml-2" style="color:black;">Tambah Artikel</h5>
-                <?= form_open_multipart('Admin/add_artikel_proses'); ?>
+                <?= form_open_multipart('Admin/add_artikel'); ?>
                 <div class="row">
                     <div class="col-4">
                         <?php

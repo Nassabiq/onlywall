@@ -75,56 +75,67 @@ class Admin extends CI_Controller
 
     public function add_artikel()
     {
-        $data = [
-            'title' => "Tambah Artikel | Only Wall",
-            'kategori' => $this->Artikel_m->getKategori(),
-            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
-        ];
+        $this->form_validation->set_rules('judul_artikel', 'Judul', 'required|trim');
+        $this->form_validation->set_rules('konten', 'Konten', 'required|trim');
+
+        $judul_artikel = htmlspecialchars($this->input->post('judul_artikel', true));
+        $konten = htmlspecialchars($this->input->post('konten'));
+        $id_kategori = $this->input->post('id_kategori');
+        $tgl_upload = date('dmY');
+
         if (!$this->session->userdata('email')) {
             redirect('OwLogin');
         } else {
-            $this->load->view('admin/add_artikel_view', $data);
-        }
-    }
-    public function add_artikel_proses()
-    {
-        $image_name = date('Ymd') . $_FILES["thumbnail"]['name'];
+            if ($this->form_validation->run() == false) {
+                # code...
+                $data = [
+                    'title' => "Tambah Artikel | Only Wall",
+                    'kategori' => $this->Artikel_m->getKategori(),
+                    'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+                ];
+                $this->load->view('admin/add_artikel_view', $data);
+            } else {
+                $image_name = date('Ymd') . '-' . $judul_artikel;
+                $config['upload_path'] =  './upload/thumbnails/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['max_size'] = 512;
+                $config['file_name'] = $image_name;
 
-        $config['upload_path'] =  './upload/thumbnails/';
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['max_size'] = 512;
-        $config['file_name'] = $image_name;
+                $this->load->library('upload', $config);
 
-        $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('thumbnail')) {
+                    $data = [
+                        'title' => "Tambah Artikel | Only Wall",
+                        'kategori' => $this->Artikel_m->getKategori(),
+                        'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+                        'error' => $this->upload->display_errors()
+                    ];
+                    $this->load->view('admin/add_artikel_view', $data);
+                } else {
 
-        if (!$this->upload->do_upload('thumbnail')) {
-            // $error = array('error' => $this->upload->display_errors());
-            // $this->load->view('admin/add_artikel_view', $error);
-            echo "gagal";
-        } else {
-            $judul_artikel = htmlspecialchars($this->input->post('judul_artikel', true));
-            $konten = htmlspecialchars($this->input->post('konten'));
-            $id_kategori = $this->input->post('id_kategori');
-            $tgl_upload = date('dmY');
-            $thumbnail = $this->upload->data('file_name');
-
-            $this->db->insert('artikel_post', array(
-                'judul_artikel' => $judul_artikel,
-                'konten' => $konten,
-                'id_kategori' => $id_kategori,
-                'tgl_upload' => $tgl_upload,
-                'thumbnail' => $thumbnail
-            ));
-            $this->session->set_flashdata('message', '<div style="font-size: 10pt;" class="text-sm-left text-success alert alert-success" role="alert" >Artikel Berhasil ditambahkan!</div>');
-            redirect('Admin/add_artikel');
+                    $thumbnail = $this->upload->data('file_name');
+                    $this->db->insert('artikel_post', array(
+                        'judul_artikel' => $judul_artikel,
+                        'konten' => $konten,
+                        'id_kategori' => $id_kategori,
+                        'tgl_upload' => $tgl_upload,
+                        'thumbnail' => $thumbnail
+                    ));
+                    $this->session->set_flashdata('message', '<div style="font-size: 10pt;" class="text-sm-left text-success alert alert-success" role="alert" >Artikel Berhasil ditambahkan!</div>');
+                    redirect('Admin/add_artikel');
+                }
+            }
         }
     }
 
     public function edit_artikel()
     {
+        $id_artikel = $this->uri->segment(3);
         $data = [
             'title' => "Edit Artikel | Only Wall",
-            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+            'kategori' => $this->Artikel_m->getKategori(),
+            'artikel' => $this->Artikel_m->getArtikelbyId($id_artikel)
         ];
 
         if (!$this->session->userdata('email')) {

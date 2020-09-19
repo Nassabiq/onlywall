@@ -15,7 +15,7 @@
             <!-- End of Topbar -->
             <div class="container">
                 <h5 class="ml-2" style="color:black;">Tambah Artikel</h5>
-                <?= form_open_multipart('Admin/add_artikel'); ?>
+                <?= form_open_multipart('Artikel/add_artikel'); ?>
                 <div class="row">
                     <div class="col-4">
                         <?php
@@ -34,7 +34,7 @@
                                 <option value="0">Kategori</option>
                                 <?php foreach ($kategori as $row) : ?>
                                     <option value="<?php echo $row->id_kategori ?>"><?php echo $row->kategori; ?></option>
-                                <?php endforeach; ?>
+                                  <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="custom-file" style="overflow-y: hidden;">

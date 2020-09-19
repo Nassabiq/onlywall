@@ -1,6 +1,7 @@
 <?php $this->load->view('template/body_atas'); ?>
 <?php $this->load->view('template/navbar'); ?>
 
+
 <!-- Page Wrapper -->
 <div id="wrapper">
     <?php $this->load->view("template/sidebar"); ?>
@@ -14,7 +15,10 @@
             <!-- End of Topbar -->
             <div class="container">
                 <h5 class="ml-2" style="color:black;">Edit Artikel</h5>
-                <?= form_open_multipart('Admin/edit_artikel'); ?>
+
+                
+                <?= $this->session->flashdata('message'); ?>
+                <?= form_open_multipart('Artikel/edit_artikel/', $artikel['id_artikel']); ?>
                 <input type="hidden" name="id_artikel" value="<?= $artikel['id_artikel']; ?>">
                 <div class="row">
                     <div class="col-4">
@@ -31,7 +35,7 @@
                         <div class="form-group">
                             <label for="formGroupExampleInput" style="color: black; font-size: 11pt;" class="m-0"><small>Kategori</small></label>
                             <select name="id_kategori" class="form-control" id="exampleFormControlSelect1">
-                                <option value="<?php echo $artikel['kategori']; ?>"><?php echo $artikel['kategori']; ?></option>
+                                <option value="0">Pilih Kategori</option>
                                 <?php foreach ($kategori as $row) : ?>
                                     <option value="<?php echo $row->id_kategori ?>"><?php echo $row->kategori; ?></option>
                                 <?php endforeach; ?>

@@ -24,14 +24,14 @@
                         <i class="fa fa-fw fa-plus" style="vertical-align: middle;" aria-hidden="true"></i>
                         Tambah Kategori
                     </button>
-                    <a type="button" href="<?= base_url('Admin/add_artikel'); ?>" class="mx-2 btn btn-success btn-sm">
+                    <a type="button" href="<?= base_url('Artikel/add_artikel'); ?>" class="mx-2 btn btn-success btn-sm">
                         <i class="fa fa-fw fa-plus" style="vertical-align: middle;" aria-hidden="true"></i>
                         Tambah Artikel
                     </a>
                 </div>
 
                 <!-- Modal -->
-                <form action="<?= base_url('Admin/add_kategori'); ?>" method="post">
+                <form action="<?= base_url('Artikel/add_kategori'); ?>" method="post">
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -70,22 +70,50 @@
                             </tr>
                         </thead>
                         <?php $a = 1; ?>
-                        <tbody class="table-bordered" style="background-color: #e6e6e6; color: black;">
-                            <?php foreach ($artikel_post as $row) : ?>
-                                <tr>
-                                    <th scope="row"><?= $a++; ?></th>
-                                    <td><?= $row->judul_artikel; ?></td>
-                                    <td style="width: 10%;" class="text-wrap"><?= htmlspecialchars_decode($row->konten); ?></td>
-                                    <td><?= $row->kategori; ?></td>
-                                    <td><?= $row->tgl_upload; ?></td>
-                                    <td>
-                                        <a href="<?= base_url('Admin/edit_artikel/') . $row->id_artikel; ?>" class="btn btn-sm btn-primary"> Edit </a>
-                                        <a href="" class="btn btn-sm btn-danger"> <i class="fa fa-fw fa-trash" aria-hidden="true"></i> </a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
+                        <?php if ($artikel_post == null) : ?>
+                            <tbody>
+                                
+                            </tbody>
+                        <?php else : ?>
+                            <tbody class="table-bordered" style="background-color: #e6e6e6; color: black;">
+                                <?php foreach ($artikel_post as $row) : ?>
+                                    <tr>
+                                        <th scope="row"><?= $a++; ?></th>
+                                        <td><?= $row->judul_artikel; ?></td>
+                                        <td style="width: 10%;" class="text-wrap"><?= htmlspecialchars_decode($row->konten); ?></td>
+                                        <td><?= $row->kategori; ?></td>
+                                        <td><?= $row->tgl_upload; ?></td>
+                                        <td>
+                                            <a href="<?= base_url('Artikel/edit_artikel/') . $row->id_artikel; ?>" class="btn btn-sm btn-primary"> Edit </a>
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+    
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        <?php endif; ?>
                     </table>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Apakah Anda ingin menghapusnya?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Artikel yang dihapus tidak bisa dikembalikan
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                    <a type="button" href="<?= base_url('Artikel/delete_artikel/') . $row->id_artikel; ?>" class="btn btn-primary btn-sm text-white">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

@@ -61,18 +61,18 @@
                         <thead class="bg-warning text-white">
                             <tr>
                                 <th style="width: 3%;">No</th>
-                                <th style="width: 20%;">Judul</th>
+                                <th style="width: 15%;">Judul</th>
                                 <th style="width: 30%;">Konten</th>
                                 <th style="width: 15%;">Kategori</th>
                                 <th style="width: 15%;">Tgl Publikasi</th>
-                                <th style="width: 15%;">Action</th>
+                                <th style="width: 20%;">Action</th>
 
                             </tr>
                         </thead>
                         <?php $a = 1; ?>
                         <?php if ($artikel_post == null) : ?>
                             <tbody>
-                                
+
                             </tbody>
                         <?php else : ?>
                             <tbody class="table-bordered" style="background-color: #e6e6e6; color: black;">
@@ -80,16 +80,28 @@
                                     <tr>
                                         <th scope="row"><?= $a++; ?></th>
                                         <td><?= $row->judul_artikel; ?></td>
-                                        <td style="width: 10%;" class="text-wrap"><?= htmlspecialchars_decode($row->konten); ?></td>
+                                        <td style="width: 10%;" class="text-wrap"><?= htmlspecialchars_decode(word_limiter($row->konten, 10)); ?></td>
                                         <td><?= $row->kategori; ?></td>
                                         <td><?= $row->tgl_upload; ?></td>
                                         <td>
-                                            <a href="<?= base_url('Artikel/edit_artikel/') . $row->id_artikel; ?>" class="btn btn-sm btn-primary"> Edit </a>
+                                            <!-- View -->
+                                            <a href="<?= base_url('Artikel/showArtikelDetail/') . $row->id_artikel; ?>" class="btn btn-sm btn-success">
+                                                <i style="vertical-align: middle;" class="fa fa-fw fa-eye" aria-hidden="true"></i>
+                                                Lihat
+                                            </a>
+
+                                            <!-- Edit -->
+                                            <a href="<?= base_url('Artikel/edit_artikel/') . $row->id_artikel; ?>" class="btn btn-sm btn-primary">
+                                                <i style="vertical-align: middle;" class="fas fa-fw fa-edit" aria-hidden="true"></i>
+                                                Edit
+                                            </a>
+
+                                            <!-- Delete -->
                                             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
                                                 <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </td>
-    
+
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

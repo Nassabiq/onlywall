@@ -16,9 +16,9 @@
             <div class="container">
                 <h5 class="ml-2" style="color:black;">Edit Artikel</h5>
 
-                
+
                 <?= $this->session->flashdata('message'); ?>
-                <?= form_open_multipart('Artikel/edit_artikel/', $artikel['id_artikel']); ?>
+                <?= form_open_multipart('Artikel/edit_artikel/' . $artikel['id_artikel']); ?>
                 <input type="hidden" name="id_artikel" value="<?= $artikel['id_artikel']; ?>">
                 <div class="row">
                     <div class="col-4">

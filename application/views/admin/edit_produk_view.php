@@ -12,10 +12,12 @@
         <div id="content">
             <?php $this->load->view("template/top"); ?>
             <div class="container">
-                <h5 style="color: black;">Tambah Produk</h5>
+                <h5 style="color: black;">Edit Produk</h5>
 
                 <div class="container mx-0 px-0 mt-4">
-                    <?= form_open_multipart('Produk/add_product'); ?>
+                    <?= form_open_multipart('Produk/edit_produk/' . $produk['id_produk']); ?>
+
+                    <input type="hidden" name="id_produk" value="<?= $produk['id_produk']; ?>">
                     <div class="row">
                         <div class="col-4">
                             <?php
@@ -23,14 +25,14 @@
                             ?>
                             <div class="form-group">
                                 <label for="formGroupExampleInput" style="color: black; font-size: 11pt;" class="m-0"><small>Nama Produk</small></label>
-                                <input class="form-control form-control-sm" type="text" name="nama_produk" placeholder="Nama Produk ...">
+                                <input class="form-control form-control-sm" type="text" name="nama_produk" placeholder="Nama Produk ..." value="<?= $produk['nama_produk'] ?>">
                                 <small class="text-danger">
                                     <?= form_error('nama_produk'); ?>
                                 </small>
                             </div>
                             <div class="form-group">
                                 <label for="formGroupExampleInput" style="color: black; font-size: 11pt;" class="m-0"><small>Harga</small></label>
-                                <input class="form-control form-control-sm" type="text" name="harga" placeholder="Harga Produk ...">
+                                <input class="form-control form-control-sm" type="text" name="harga" placeholder="Harga Produk ..." value="<?= $produk['harga']; ?>">
                                 <small class="text-danger">
                                     <?= form_error('harga'); ?>
                                 </small>
@@ -48,7 +50,7 @@
                         <div class="col-8">
                             <div class="form-group purple-border px-5">
                                 <label for="formGroupExampleInput" style="color: black; font-size: 11pt;" class="m-0"><small>Deskripsi Produk</small></label>
-                                <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea4" rows="6"></textarea>
+                                <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea4" rows="6"><?= $produk['deskripsi']; ?></textarea>
                             </div>
                             <div class="input-group px-5">
                                 <div class="custom-file" style="overflow-y: hidden;">

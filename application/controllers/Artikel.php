@@ -58,6 +58,21 @@ class Artikel extends CI_Controller
         redirect('Artikel');
     }
 
+    public function showArtikelDetail()
+    {
+        $id_artikel = $this->uri->segment(3);
+        $data = [
+            'title' => "Produk | Only Wall",
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+            'artikel' => $this->Artikel_m->getArtikelbyId($id_artikel)
+        ];
+        if (!$this->session->userdata('email')) {
+            redirect('OwLogin');
+        } else {
+            $this->load->view('admin/artikel_view_detail', $data);
+        }
+    }
+
     public function add_artikel()
     {
         $data = [
@@ -218,8 +233,12 @@ class Artikel extends CI_Controller
 
     public function delete_artikel()
     {
-
         $id_artikel = $this->uri->segment(3);
+
+        $data['artikel'] = $this->Artikel_m->getArtikelbyId($id_artikel);
+        $old_image = $data['artikel']['thumbnail'];
+        unlink(FCPATH . 'upload/thumbnails/' . $old_image);
+
         $this->db->where('id_artikel', $id_artikel);
         $this->db->delete('artikel_post');
 

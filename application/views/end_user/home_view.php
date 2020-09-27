@@ -148,27 +148,6 @@
 					<a href="#" class="btn btn-primary btn-sm">Lihat Produk</a>
 				</div>
 			</div>
-			<div class="card item">
-				<img src="https://picsum.photos/200?random=4" class="image-produk card-img-top" alt="...">
-				<div class="hover-link">
-					<p>Nama Produk</p>
-					<a href="#" class="btn btn-primary btn-sm">Lihat Produk</a>
-				</div>
-			</div>
-			<div class="card item">
-				<img src="https://picsum.photos/200?random=5" class="image-produk card-img-top" alt="...">
-				<div class="hover-link">
-					<p>Nama Produk</p>
-					<a href="#" class="btn btn-primary btn-sm">Lihat Produk</a>
-				</div>
-			</div>
-			<div class="card item">
-				<img src="https://picsum.photos/200?random=" class="image-produk card-img-top" alt="...">
-				<div class="hover-link">
-					<p>Nama Produk</p>
-					<a href="#" class="btn btn-primary btn-sm">Lihat Produk</a>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>

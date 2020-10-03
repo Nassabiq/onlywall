@@ -79,8 +79,8 @@
                                 <?php foreach ($artikel_post as $row) : ?>
                                     <tr>
                                         <th scope="row"><?= $a++; ?></th>
-                                        <td><?= $row->judul_artikel; ?></td>
-                                        <td style="width: 10%;" class="text-wrap"><?= htmlspecialchars_decode(word_limiter($row->konten, 10)); ?></td>
+                                        <td style="font-weight: 600;"> <?= $row->judul_artikel; ?></td>
+                                        <td style="font-size: 10pt; width: 10%;" class="text-wrap"><?= htmlspecialchars_decode(word_limiter($row->konten, 10)); ?></td>
                                         <td><?= $row->kategori; ?></td>
                                         <td><?= $row->tgl_upload; ?></td>
                                         <td>

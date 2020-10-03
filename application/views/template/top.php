@@ -34,7 +34,7 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link" style="overflow-y: hidden;" href="#">
                 <span class="mr-2 d-none d-lg-inline text-gray-600"><?= $user['nama']; ?></span>
-                <img style="overflow-y: hidden;" class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img style="overflow-y: hidden;" class="img-profile rounded-circle" src="<?= base_url('upload/account/') . $user['image']; ?>">
             </a>
         </li>
 

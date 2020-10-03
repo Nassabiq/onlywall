@@ -24,7 +24,7 @@ class Produk extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('OwLogin');
         } else {
-            $this->load->view('admin/product_view', $data);
+            $this->load->view('admin/produk/product_view', $data);
         }
     }
 
@@ -51,7 +51,7 @@ class Produk extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('OwLogin');
         } else {
-            $this->load->view('admin/produk_view_detail', $data);
+            $this->load->view('admin/produk/produk_view_detail', $data);
         }
     }
 
@@ -78,7 +78,7 @@ class Produk extends CI_Controller
             $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
 
             if ($this->form_validation->run() == false) {
-                $this->load->view('admin/add_product_view', $data);
+                $this->load->view('admin/produk/add_product_view', $data);
             } else {
 
                 $this->load->library('upload');
@@ -110,7 +110,7 @@ class Produk extends CI_Controller
                     if (!$this->upload->do_upload('foto_produk')) {
                         $error = $this->upload->display_errors();
                         $this->session->set_flashdata('message', $error);
-                        $this->load->view('admin/add_artikel_view', $data);
+                        $this->load->view('admin/produk/add_artikel_view', $data);
                     } else {
                         $dataInfo = $this->upload->data();
                         $configer['image_library'] = 'gd2';
@@ -167,7 +167,7 @@ class Produk extends CI_Controller
             $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
 
             if ($this->form_validation->run() == false) {
-                $this->load->view('admin/edit_produk_view', $data);
+                $this->load->view('admin/produk/edit_produk_view', $data);
             } else {
 
                 $this->load->library('upload');
@@ -203,7 +203,7 @@ class Produk extends CI_Controller
                     if (!$this->upload->do_upload('foto_produk')) {
                         $error = $this->upload->display_errors();
                         $this->session->set_flashdata('message', $error);
-                        $this->load->view('admin/add_artikel_view', $data);
+                        $this->load->view('admin/produk/add_product_view', $data);
                     } else {
                         // $data['produk'] = $this->Produk_m->getProdukbyId($id_produk);
                         // var_dump($old_image);

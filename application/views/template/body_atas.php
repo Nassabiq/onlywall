@@ -43,10 +43,17 @@
             /* transform: translate(-50%, -50%); */
         }
 
+        .container .owl-carousel {
+            /* display: flex;
+            align-content: center; */
+            width: 60%;
+            float: none;
+            margin: 0 auto;
+        }
+
         .image-produk {
             opacity: 1;
             /* display: block; */
-            width: 100%;
             transition: .5s ease;
             backface-visibility: hidden;
         }

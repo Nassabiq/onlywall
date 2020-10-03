@@ -164,7 +164,7 @@ class Artikel extends CI_Controller
             $judul_artikel = htmlspecialchars($this->input->post('judul_artikel', true));
             $konten = htmlspecialchars($this->input->post('konten'));
             $id_kategori = $this->input->post('id_kategori');
-            $tgl_upload = date('dmY');
+            $tgl_upload = date('d-m-Y');
 
 
             if ($this->form_validation->run() == false) {

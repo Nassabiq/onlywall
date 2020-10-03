@@ -5,10 +5,10 @@
         dots: false,
         autoHeight: true,
         autoplay: true,
-        autoplayTimeout: 1000,
+        autoplayTimeout: 2000,
         autoplayHoverPause: true,
         mouseDrag: false,
-        items: 5,
+        items: 3,
         touchDrag: false
     });
 
@@ -22,6 +22,18 @@
         autoplayHoverPause: true,
         mouseDrag: false,
         items: 2,
+        touchDrag: false
+    });
+    $('#owl-3').owlCarousel({
+        loop: true,
+        margin: 10,
+        dots: false,
+        autoHeight: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        mouseDrag: false,
+        items: 3,
         touchDrag: false
     });
 </script>

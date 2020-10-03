@@ -72,45 +72,75 @@
 	</div>
 </div>
 
+<div class="container mt-4">
+	<div class="jumbotron" style="background-color: white;">
+		<p class="text-center" style="font-size: 16pt;">
+			"<b>Onlywall</b> menyediakan produk seperti baju, sepatu, pernak pernik pesta dan segala kebutuhan anda dengan harga kompetitif dan model terbaru."
+		</p>
+	</div>
+</div>
 <!-- Logo , Brand dan Sejarahnya -->
-<div class="container-fluid mt-4 mx-0 p-0">
-	<div class="jumbotron">
+<div class="container-fluid mx-0 p-0">
+	<div class="jumbotron" style="background-color: #d1edff;">
 		<div class="row">
 			<div class="col-md-12 mb-5">
 				<h6 class="text-center">Apa yang ada di</h6>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row d-flex justify-content-center">
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="rocket-outline"></ion-icon>
+						<ion-icon style="font-size: 64px;" name="shirt-outline"></ion-icon>
 					</div>
 					<div class="media-body">
-						<h4 class="heading" style="font-weight: 600;">Trending Product</h4>
-						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Only Wall menyediakan barang-barang yang trend digunakan oleh orang banyak saat ini.</p>
+						<h4 class="heading" style="font-weight: 600;">Model Produk terbaru</h4>
+						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Onlywall selalu berusaha untuk tidak hanya memberikan kebutuhan terbaik untuk anda tapi juga terbaru sehingga tidak ketinggalan zaman.</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="megaphone-outline"></ion-icon>
+						<ion-icon style="font-size: 64px;" name="trending-up-outline"></ion-icon>
 					</div>
 					<div class="media-body">
-						<h4 class="heading" style="font-weight: 600;">Trending Product</h4>
-						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Only Wall menyediakan barang-barang yang trend digunakan oleh orang banyak saat ini.</p>
+						<h4 class="heading" style="font-weight: 600;">Pengiriman Cepat</h4>
+						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Kami selalu berusaha untuk melakukan pengiriman dihari yang sama saat pembelian dilakukan</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="megaphone-outline"></ion-icon>
+						<ion-icon style="font-size: 64px;" name="pricetags-outline"></ion-icon>
 					</div>
 					<div class="media-body">
-						<h4 class="heading" style="font-weight: 600;">Trending Product</h4>
-						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Only Wall menyediakan barang-barang yang trend digunakan oleh orang banyak saat ini.</p>
+						<h4 class="heading" style="font-weight: 600;">Harga Kompetitif</h4>
+						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Kami semaksimal mungkin kami akan menyediakan produk dengan harga yang kompetitif, tidak terlalu murah memang tapi juga tidak terlalu mahal.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="media block-6 d-block text-center">
+					<div class="icon mb-3">
+						<ion-icon style="font-size: 64px;" name="stats-chart-outline"></ion-icon>
+					</div>
+					<div class="media-body">
+						<h4 class="heading" style="font-weight: 600;">Eceran dan partai</h4>
+						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Kami melayani Pembelian dalam jumlah besar maupun eceran.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="media block-6 d-block text-center">
+					<div class="icon mb-3">
+						<ion-icon style="font-size: 64px;" name="information-circle-outline"></ion-icon>
+					</div>
+					<div class="media-body">
+						<h4 class="heading" style="font-weight: 600;">Info Info Seru Disini</h4>
+						<p style="font-size: 11pt;" class="text-secondary" style="font-weight: 100;">Tidak hanya menjual produk kami juga ingin mengajak anda sama
+							sama membaca berbagai hal seru untuk menambah wawasan anda.</p>
 					</div>
 				</div>
 			</div>
@@ -126,7 +156,7 @@
 	</p>
 	<!-- Carousel Produk  -->
 	<div class="container">
-		<div class="owl-carousel owl-theme" id="owl-1">
+		<div class="owl-carousel owl-theme" style="overflow-y: hidden;" id="owl-1">
 			<div class="card item">
 				<img src="https://picsum.photos/200?random=1" class="image-produk card-img-top" alt="...">
 				<div class="hover-link">
@@ -202,9 +232,11 @@
 		<div class="row mt-5 mb-3 mx-5">
 			<div class="col-lg-4 col-md-4 col-sm-12">
 				<h6 style="font-weight: 600;">About Only Wall</h6>
-				<p style="font-weight: 300; font-size: 10pt;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aliquid maiores a, libero placeat neque assumenda! Quam quasi fuga architecto nisi cum, consequatur suscipit officiis iure exercitationem quo aut eos.</p>
+				<p class="mt-3" style="font-weight: 300; font-size: 10pt;">
+					<b>Onlywall</b> menyediakan produk seperti baju, sepatu, pernak pernik pesta dan segala kebutuhan anda dengan harga kompetitif dan model terbaru.
+				</p>
 			</div>
-			<div class="col-lg-4 col-md-4 col-sm-12">
+			<div class=" col-lg-4 col-md-4 col-sm-12">
 				<h6 style="font-weight: 600;">Contact Info</h6>
 				<p style="font-weight: 300; font-size: 10pt;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aliquid maiores a, libero placeat neque assumenda! Quam quasi fuga architecto nisi cum, consequatur suscipit officiis iure exercitationem quo aut eos.</p>
 			</div>

@@ -54,7 +54,7 @@
                             </div>
                             <div class="input-group px-5">
                                 <div class="custom-file" style="overflow-y: hidden;">
-                                    <input type="file" name="foto_produk[]" class="custom-file-" id="customFile" multiple required>
+                                    <input type="file" name="foto_produk[]" class="custom-file" id="customFile" multiple required>
                                     <label class="custom-file-label" for="customFile">Gambar Produk</label>
                                 </div>
                             </div>

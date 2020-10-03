@@ -24,7 +24,7 @@
                                 $class = ' active';
                                 foreach ($image as $obj) : ?>
                                     <div class="carousel-item <?= $class; ?>" data-interval="3000">
-                                        <img class="item" style="object-fit: cover; height: 350px; width: 350px;" src="<?= site_url('/upload/produk/') . $obj->image; ?>" alt="OwProduk-Image">
+                                        <img class="item" style="object-fit: cover; height: 350px; width: 350px;" src="<?= base_url('/upload/produk/') . $obj->image; ?>" alt="OwProduk-Image">
                                     </div>
                                 <?php
                                     $class = '';

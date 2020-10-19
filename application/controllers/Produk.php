@@ -74,7 +74,7 @@ class Produk extends CI_Controller
             $nama_produk = htmlspecialchars($this->input->post('nama_produk', true));
             $harga = $this->input->post('harga', true);
             $id_kategori = $this->input->post('id_kategori', true);
-            $published_at = date('dmY');
+            $published_at = date('Y-m-d');
             $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
 
             if ($this->form_validation->run() == false) {
@@ -98,7 +98,7 @@ class Produk extends CI_Controller
 
 
                     // $image_name = 'OwProduk' . '-' . $judul_artikel;
-                    $image_name = 'OwArtikel' . '-' . $nama_produk . '-' . $a++;
+                    $image_name = 'OwProduk' . '-' . $nama_produk . '-' . $a++;
                     $config['file_name'] = $image_name;
                     $config['upload_path'] = './upload/produk/';
                     $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -163,7 +163,7 @@ class Produk extends CI_Controller
             $nama_produk = htmlspecialchars($this->input->post('nama_produk', true));
             $harga = $this->input->post('harga', true);
             $id_kategori = $this->input->post('id_kategori', true);
-            $published_at = date('dmY');
+            $published_at = date('Y-m-d');
             $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
 
             if ($this->form_validation->run() == false) {
@@ -192,7 +192,7 @@ class Produk extends CI_Controller
 
 
                     // $image_name = 'OwProduk' . '-' . $judul_artikel;
-                    $image_name = 'OwArtikel' . '-' . $nama_produk . '-' . $a++;
+                    $image_name = 'OwProduk' . '-' . $nama_produk . '-' . $a++;
                     $config['file_name'] = $image_name;
                     $config['upload_path'] = './upload/produk/';
                     $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -223,8 +223,7 @@ class Produk extends CI_Controller
                     };
                 }
                 $foto_produk = json_encode($uploadImgData);
-
-                $this->db->update('produk', array(
+                $dataProduk = [
                     'id_produk' => $id_produk,
                     'nama_produk' => $nama_produk,
                     'harga' => $harga,
@@ -232,7 +231,10 @@ class Produk extends CI_Controller
                     'published_at' => $published_at,
                     'deskripsi' => $deskripsi,
                     'foto_produk' => $foto_produk
-                ));
+                ];
+
+                $this->db->where('id_produk', $dataProduk['id_produk']);
+                $this->db->update('produk', $dataProduk);
 
                 $this->session->set_flashdata('message', '<div style="font-size: 10pt;" class="text-sm-left text-success alert alert-success" role="alert" >Produk Berhasil diubah!</div>');
                 redirect('Produk');

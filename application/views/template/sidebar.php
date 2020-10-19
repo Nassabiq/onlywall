@@ -2,19 +2,13 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" style="overflow-y: hidden;" href="<?php echo base_url("/Admin"); ?>">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-2 my-5 text-capitalize" style="font-family: 'Lobster Two', cursive; font-size: 18pt;">Only Wall</div>
-    </a>
-
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" style="overflow-y: hidden;" href="<?php echo base_url("/Admin"); ?>"><img class="ml-2" style="width: 150px;" src="<?= base_url('/upload/LOGO-ONLYWALL-putih.png'); ?>" alt="OwLogo"></a>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php echo base_url("/Admin"); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -72,22 +66,28 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="register.html">Registrasi Akun</a>
-                    <a class="collapse-item" href="<?= base_url('Account') ?>">Kelola Akun</a>
+                    <a class="collapse-item" href="<?= base_url('Account/addAccount'); ?>">Registrasi Akun</a>
+                    <a class="collapse-item" href="<?= base_url('Account'); ?>">Kelola Akun</a>
                     <div class="collapse-divider"></div>
                 </div>
             </div>
         </li>
+        <!-- Divider -->
         <hr class="sidebar-divider">
-
     <?php endif; ?>
-
-    <!-- Divider -->
 
     <!-- Heading -->
     <div class="sidebar-heading">
         Action
     </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url('Profile'); ?>">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">

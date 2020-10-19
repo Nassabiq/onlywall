@@ -81,10 +81,10 @@
                                     <tr>
                                         <th scope="row"><?= $a++; ?></th>
                                         <td><?= $row->nama_produk; ?></td>
-                                        <td style="width: 10%;" class="text-wrap"><?= htmlspecialchars_decode(word_limiter($row->deskripsi, 10)); ?></td>
-                                        <td><?= $row->harga; ?></td>
+                                        <td style="width: 10%; font-size: 10pt;" class="text-wrap"><?= htmlspecialchars_decode(word_limiter($row->deskripsi, 10)); ?></td>
+                                        <td><?= "Rp. " . number_format($row->harga); ?></td>
                                         <td><?= $row->kategori; ?></td>
-                                        <td><?= $row->published_at; ?></td>
+                                        <td><?= date("d-M-Y", strtotime($row->published_at)); ?></td>
                                         <td>
                                             <!-- View -->
                                             <a href="<?= base_url('Produk/showProdukDetail/') . $row->id_produk; ?>" class="btn btn-sm btn-success">

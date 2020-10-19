@@ -82,7 +82,7 @@
                                         <td style="font-weight: 600;"> <?= $row->judul_artikel; ?></td>
                                         <td style="font-size: 10pt; width: 10%;" class="text-wrap"><?= htmlspecialchars_decode(word_limiter($row->konten, 10)); ?></td>
                                         <td><?= $row->kategori; ?></td>
-                                        <td><?= $row->tgl_upload; ?></td>
+                                        <td><?= date('d-M-Y', strtotime($row->tgl_upload)); ?></td>
                                         <td>
                                             <!-- View -->
                                             <a href="<?= base_url('Artikel/showArtikelDetail/') . $row->id_artikel; ?>" class="btn btn-sm btn-success">

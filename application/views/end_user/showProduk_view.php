@@ -1,17 +1,12 @@
-<?php $this->load->view('template/body_atas'); ?>
-<?php $this->load->view('template/navbar'); ?>
-
+<?php $this->load->view('template/body_atas') ?>
+<?php $this->load->view('template/navbar') ?>
 
 <div id="wrapper">
-    <?php $this->load->view("template/sidebar"); ?>
-
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
-            <?php $this->load->view("template/top"); ?>
-
-            <div class="container mb-5">
+            <div class="container my-5">
                 <div class="row">
                     <div class="col-4">
                         <!-- carousel -->
@@ -39,7 +34,7 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                        <div class="link-wa mt-2">
+                        <div class="link-wa mt-2 d-flex justify-content-center">
                             <a class="btn btn-success mt-3" href="https://api.whatsapp.com/send?phone=6285773406307" role="button"><i style="vertical-align: middle;" class="mr-2 fab fa-fw fa-whatsapp" aria-hidden="true"></i>Pesan di WhatsApp</a>
                         </div>
                     </div>
@@ -57,17 +52,6 @@
                                     </td>
                                     <td>
                                         <p style="color: black;" class="ml-2"><?= $produk['kategori']; ?></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p style="color: black;"><small> Tanggal Upload</small></p>
-                                    </td>
-                                    <td>
-                                        <p class="ml-3"><small>:</small></p>
-                                    </td>
-                                    <td>
-                                        <p style="color: black;" class="ml-2"><?= $produk['published_at']; ?></p>
                                     </td>
                                 </tr>
                                 <tr valign="top">
@@ -93,16 +77,9 @@
     </div>
 </div>
 
+<?php $this->load->view('template/footer'); ?>
 <script>
-    $("#navbar-user").remove();
-    $("body").attr("id", "page-top");
-
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        items: 1,
-        dots: false,
-        autoplay: true
-
-    })
+    $("ion-icon").css("padding-right", "10px");
+    $("LINK[href*='assets/css/sb-admin-2.min.css']").remove();
 </script>
-<?php $this->load->view('template/body_bawah') ?>
+<?php $this->load->view('template/body_bawah'); ?>

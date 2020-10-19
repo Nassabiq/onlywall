@@ -22,41 +22,26 @@
 					<li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
 				</ol>
 				<div class="carousel-inner">
-					<div class="carousel-item active" data-interval="3000">
-						<img src="https://picsum.photos/400/150?random=1" class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>First slide label</h5>
-							<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+					<?php $class =  " active";
+					$count = 0;
+					foreach ($artikel as $arr) :	?>
+						<div class="carousel-item <?= $class; ?>" data-interval="3000">
+							<img src="<?= base_url('upload/thumbnails/') . $arr->thumbnail; ?>" class="d-block w-100" style="height: 550px; object-fit: cover;" alt="Ow-Carousel">
+							<div class="carousel-caption d-none d-md-block">
+								<a style="text-decoration: none;" href="<?= base_url('/Home/showArtikel/') . $arr->id_artikel; ?>">
+									<h4 style="font-weight: bold;"><?= $arr->judul_artikel ?></h4>
+								</a>
+								<p><?= htmlspecialchars_decode(word_limiter($arr->konten, 10)); ?></p>
+							</div>
 						</div>
-					</div>
-					<div class="carousel-item" data-interval="3000">
-						<img src="https://picsum.photos/400/150?random=2" class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>Second slide label</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-						</div>
-					</div>
-					<div class="carousel-item" data-interval="3000">
-						<img src="https://picsum.photos/400/150?random=3" class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>Third slide label</h5>
-							<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-						</div>
-					</div>
-					<div class="carousel-item" data-interval="3000">
-						<img src="https://picsum.photos/400/150?random=4" class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>4th slide label</h5>
-							<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-						</div>
-					</div>
-					<div class="carousel-item" data-interval="3000">
-						<img src="https://picsum.photos/400/150?random=5" class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>5th slide label</h5>
-							<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-						</div>
-					</div>
+
+					<?php
+						$count++;
+						if ($count == 5) {
+							break;
+						}
+						$class = '';
+					endforeach;	?>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -84,14 +69,14 @@
 	<div class="jumbotron" style="background-color: #d1edff;">
 		<div class="row">
 			<div class="col-md-12 mb-5">
-				<h6 class="text-center">Apa yang ada di</h6>
+				<h6 class="text-center">Apa yang ada di <img class="ml-2" style="width: 200px;" src="<?= base_url('/upload/LOGO-ONLYWALL.png'); ?>" alt="OwLogo"></h6>
 			</div>
 		</div>
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="shirt-outline"></ion-icon>
+						<ion-icon style="font-size: 64px; color: #344c9d;" name="shirt-outline"></ion-icon>
 					</div>
 					<div class="media-body">
 						<h4 class="heading" style="font-weight: 600;">Model Produk terbaru</h4>
@@ -102,7 +87,7 @@
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="trending-up-outline"></ion-icon>
+						<ion-icon style="font-size: 64px; color: #ffd302;" name="trending-up-outline"></ion-icon>
 					</div>
 					<div class="media-body">
 						<h4 class="heading" style="font-weight: 600;">Pengiriman Cepat</h4>
@@ -113,7 +98,7 @@
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="pricetags-outline"></ion-icon>
+						<ion-icon style="font-size: 64px; color: #344c9d;" name="pricetags-outline"></ion-icon>
 					</div>
 					<div class="media-body">
 						<h4 class="heading" style="font-weight: 600;">Harga Kompetitif</h4>
@@ -124,7 +109,7 @@
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="stats-chart-outline"></ion-icon>
+						<ion-icon style="font-size: 64px; color: #ffd302;" name="stats-chart-outline"></ion-icon>
 					</div>
 					<div class="media-body">
 						<h4 class="heading" style="font-weight: 600;">Eceran dan partai</h4>
@@ -135,7 +120,7 @@
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="media block-6 d-block text-center">
 					<div class="icon mb-3">
-						<ion-icon style="font-size: 64px;" name="information-circle-outline"></ion-icon>
+						<ion-icon style="font-size: 64px; color: #344c9d;" name="information-circle-outline"></ion-icon>
 					</div>
 					<div class="media-body">
 						<h4 class="heading" style="font-weight: 600;">Info Info Seru Disini</h4>
@@ -157,29 +142,47 @@
 	<!-- Carousel Produk  -->
 	<div class="container">
 		<div class="owl-carousel owl-theme" style="overflow-y: hidden;" id="owl-1">
-			<div class="card item">
-				<img src="https://picsum.photos/200?random=1" class="image-produk card-img-top" alt="...">
-				<div class="hover-link">
-					<p>Nama Produk</p>
-					<a href="#" class="btn btn-primary btn-sm">Lihat Produk</a>
-				</div>
-			</div>
-			<div class="card item">
-				<img src="https://picsum.photos/200?random=2" class="image-produk card-img-top" alt="...">
-				<div class="hover-link">
-					<p>Nama Produk</p>
-					<a href="#" class="btn btn-primary btn-sm">Lihat Produk</a>
-				</div>
-			</div>
-			<div class="card item">
-				<img src="https://picsum.photos/200?random=3" class="image-produk card-img-top" alt="...">
-				<div class="hover-link">
-					<p>Nama Produk</p>
-					<a href="#" class="btn btn-primary btn-sm">Lihat Produk</a>
-				</div>
+			<?php foreach ($produk as $p) : ?>
+				<?php $gambar = json_decode($p->foto_produk); ?>
+				<?php foreach ($gambar[0] as $obj) : ?>
+					<div class="card item">
+						<img src="<?= base_url('/upload/produk/') . $obj; ?>" class="image-produk card-img-top" alt="Produk" style="height: 200px; width: 400px; object-fit: cover;">
+						<div class="hover-link">
+							<p style="font-size: 10pt;"><?= $p->nama_produk; ?></p>
+							<p style="font-weight: bold;"><?= 'Rp. ' . number_format($p->harga); ?></p>
+							<a href="<?= base_url('/Home/showProduk/') . $p->id_produk;  ?>" class="btn btn-primary btn-sm">Lihat Produk</a>
+						</div>
+						<p>
+						</p>
+					</div>
+				<?php endforeach; ?>
+			<?php endforeach; ?>
+		</div>
+		<h3 class="text-center m-5	">Detail</h3>
+		<div class="container mt-5">
+			<div class="row d-flex justify-content-center">
+				<?php foreach ($produk as $p) : ?>
+					<?php $gambar = json_decode($p->foto_produk); ?>
+					<?php foreach ($gambar[0] as $obj) : ?>
+						<div class="col-lg-3 col-md-6 col-sm-12">
+							<div class="card item ml-1 my-3">
+								<img src="<?= base_url('/upload/produk/') . $obj; ?>" class="image-produk card-img-top" alt="Produk" style="height: 200px; width: 400px; object-fit: cover;">
+								<div class="desc m-2">
+									<p style="font-size: 10pt;"><?= $p->nama_produk; ?></p>
+									<p style="font-weight: bold;"><?= 'Rp. ' . number_format($p->harga); ?></p>
+									<div class="mr-2">
+										<a href="<?= base_url('/Home/showProduk/') . $p->id_produk;  ?>" class="btn btn-primary btn-sm mt-1">Lihat Produk</a>
+										<a class="btn btn-success btn-sm mt-1" href="https://api.whatsapp.com/send?phone=6285773406307" role="button"><i style="vertical-align: middle;" class="mr-2 fab fa-fw fa-whatsapp" aria-hidden="true"></i>Chat WA</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <!-- Artikel Terbaru -->
@@ -192,68 +195,30 @@
 		<div class="row mx-2">
 			<!-- Artikel card -->
 			<div class="container owl-carousel" id="owl-2">
-				<div class="card item mb-3">
-					<div class="row no-gutters">
-						<div class="col-md-4">
-							<img src="https://picsum.photos/200?random=5" class="card-img" alt="...">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title">Judul Artikel</h5>
-								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-								<p class="card-text"><small class="text-muted">diupload 3 jam yang lalu</small></p>
+				<?php foreach ($artikel as $a) : ?>
+					<div class="card item mb-3">
+						<div class="row no-gutters">
+							<div class="col-md-4">
+								<img src="<?= base_url('upload/thumbnails/') .  $a->thumbnail; ?>" style="width: 400px; height: 200px; object-fit: cover;" class="card-img" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<a style="text-decoration: none;" href="<?= base_url('/Home/showArtikel/') . $a->id_artikel; ?>">
+										<h5 class="card-title"><?= $a->judul_artikel; ?></h5>
+									</a>
+									<p class="card-text"><?= htmlspecialchars_decode(word_limiter($a->konten, 10)); ?></p>
+									<p class="card-text"><small class="text-muted"><?= $a->tgl_upload; ?></small></p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="card item mb-3">
-					<div class="row no-gutters">
-						<div class="col-md-4">
-							<img src="https://picsum.photos/200?random=6" class="card-img" alt="...">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
-								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- Footer -->
-<footer class="bg-warning">
-	<div class="container">
-		<div class="row mt-5 mb-3 mx-5">
-			<div class="col-lg-4 col-md-4 col-sm-12">
-				<h6 style="font-weight: 600;">About Only Wall</h6>
-				<p class="mt-3" style="font-weight: 300; font-size: 10pt;">
-					<b>Onlywall</b> menyediakan produk seperti baju, sepatu, pernak pernik pesta dan segala kebutuhan anda dengan harga kompetitif dan model terbaru.
-				</p>
-			</div>
-			<div class=" col-lg-4 col-md-4 col-sm-12">
-				<h6 style="font-weight: 600;">Contact Info</h6>
-				<p style="font-weight: 300; font-size: 10pt;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aliquid maiores a, libero placeat neque assumenda! Quam quasi fuga architecto nisi cum, consequatur suscipit officiis iure exercitationem quo aut eos.</p>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-12">
-				<h6 style="font-weight: 600;">Quick Links</h6>
-				<p style="font-weight: 300; font-size: 10pt;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aliquid maiores a, libero placeat neque assumenda! Quam quasi fuga architecto nisi cum, consequatur suscipit officiis iure exercitationem quo aut eos.</p>
-			</div>
-		</div>
-		<div class="col-12 d-flex justify-content-center mb-5">
-			<div class="row mx-0">
-				<ion-icon style="font-size: 32px;" name="logo-facebook"></ion-icon>
-				<ion-icon style="font-size: 32px;" name="logo-whatsapp"></ion-icon>
-				<ion-icon style="font-size: 32px;" name="logo-instagram"></ion-icon>
-			</div>
-		</div>
-	</div>
-</footer>
+<?php $this->load->view('template/footer'); ?>
 
 <script>
 	$("#carouselExampleCaptions").hide();
@@ -267,4 +232,4 @@
 	$("LINK[href*='assets/css/sb-admin-2.min.css']").remove();
 </script>
 
-<?php $this->load->view('template/body_bawah') ?>
+<?php $this->load->view('template/body_bawah'); ?>

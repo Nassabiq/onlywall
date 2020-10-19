@@ -42,7 +42,7 @@ class Artikel extends CI_Controller
             # code...
             redirect('OwLogin');
         } else {
-            $this->load->view('admin/artikel_view', $data);
+            $this->load->view('admin/artikel/artikel_view', $data);
         }
     }
 
@@ -69,7 +69,7 @@ class Artikel extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('OwLogin');
         } else {
-            $this->load->view('admin/artikel_view_detail', $data);
+            $this->load->view('admin/artikel/artikel_view_detail', $data);
         }
     }
 
@@ -90,10 +90,10 @@ class Artikel extends CI_Controller
             $judul_artikel = htmlspecialchars($this->input->post('judul_artikel', true));
             $konten = htmlspecialchars($this->input->post('konten'));
             $id_kategori = $this->input->post('id_kategori');
-            $tgl_upload = date('dmY');
+            $tgl_upload = date('Y-m-d');
 
             if ($this->form_validation->run() == false) {
-                $this->load->view('admin/add_artikel_view', $data);
+                $this->load->view('admin/artikel/add_artikel_view', $data);
             } else {
                 $image_name = 'OwArtikel' . '-' . $judul_artikel;
                 $config['upload_path'] =  './upload/thumbnails/';
@@ -112,7 +112,7 @@ class Artikel extends CI_Controller
 
                     $error = $this->upload->display_errors();
                     $this->session->set_flashdata('message', $error);
-                    $this->load->view('admin/add_artikel_view', $data);
+                    $this->load->view('admin/artikel/add_artikel_view', $data);
                 } else {
 
                     $thumbnail = $this->upload->data();
@@ -156,7 +156,7 @@ class Artikel extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('OwLogin');
         } else {
-            # code...
+            # code...   
             $this->form_validation->set_rules('judul_artikel', 'Judul', 'required|trim');
             $this->form_validation->set_rules('konten', 'Konten', 'required|trim');
 
@@ -164,11 +164,11 @@ class Artikel extends CI_Controller
             $judul_artikel = htmlspecialchars($this->input->post('judul_artikel', true));
             $konten = htmlspecialchars($this->input->post('konten'));
             $id_kategori = $this->input->post('id_kategori');
-            $tgl_upload = date('d-m-Y');
+            $tgl_upload = date('Y-m-d');
 
 
             if ($this->form_validation->run() == false) {
-                $this->load->view('admin/edit_artikel_view', $data);
+                $this->load->view('admin/artikel/edit_artikel_view', $data);
             } else {
 
                 $upload_image = $_FILES['thumbnail']['name'];
@@ -191,7 +191,7 @@ class Artikel extends CI_Controller
                         ];
                         $error = $this->upload->display_errors();
                         $this->session->set_flashdata('message', $error);
-                        $this->load->view('admin/add_artikel_view', $data);
+                        $this->load->view('admin/artikel/add_artikel_view', $data);
                     } else {
                         $data['artikel'] = $this->Artikel_m->getArtikelbyId($id_artikel);
                         $old_image = $data['artikel']['thumbnail'];

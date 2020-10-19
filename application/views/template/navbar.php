@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-user">
   <div class="container">
-    <a class="navbar-brand mr-5" href="#" style="font-family: 'Lobster Two', cursive; font-size: 20pt;">Only Wall</a>
+    <a class="navbar-brand mr-5" href="<?= base_url(); ?>"><img class="ml-2" style="width: 150px;" src="<?= base_url('/upload/LOGO-ONLYWALL.png'); ?>" alt="OwLogo"></a>
 
     <!-- Toggle Responsive -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

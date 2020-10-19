@@ -8,8 +8,16 @@
         autoplayTimeout: 2000,
         autoplayHoverPause: true,
         mouseDrag: false,
-        items: 3,
-        touchDrag: false
+        responsiveClass: true,
+        touchDrag: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            1000: {
+                items: 3
+            }
+        }
     });
 
     $('#owl-2').owlCarousel({
@@ -22,7 +30,15 @@
         autoplayHoverPause: true,
         mouseDrag: false,
         items: 2,
-        touchDrag: false
+        touchDrag: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            1000: {
+                items: 2
+            }
+        }
     });
     $('#owl-3').owlCarousel({
         loop: true,

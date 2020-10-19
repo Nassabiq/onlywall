@@ -87,6 +87,23 @@
             overflow-y: hidden;
         }
 
+        .sosmed {
+            text-decoration: none;
+            color: black;
+        }
+
+        .icon-wa:hover {
+            color: green;
+        }
+
+        .icon-ig:hover {
+            color: #ff007b;
+        }
+
+        .link {
+            color: black;
+            text-decoration: none;
+        }
 
         h1,
         h2,

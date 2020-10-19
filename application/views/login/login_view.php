@@ -15,7 +15,7 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4" style="font-family: 'Lobster Two', cursive; font-size: 32pt;">Only Wall</h1>
-                                    <p style="font-size: 11pt;" class="mt-0">Welcome Back !! Please Login</p>
+                                    <p style="font-size: 11pt;" class="mt-0">Welcome !! Please Login</p>
                                 </div>
                                 <?php
                                 echo $this->session->flashdata('message');
@@ -39,7 +39,7 @@
                                         <div class="col-3"></div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-center mt-3">
-                                        <a class="text-center" href="<?= site_url('OwLogin/register'); ?>"> <small> Daftar disit koe </small></a>
+                                        <a class="text-center" href="<?= base_url(); ?>"> <small> Kembali ke Home </small></a>
                                     </div>
                                 </form>
                             </div>

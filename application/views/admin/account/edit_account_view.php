@@ -20,7 +20,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-6 col-md-12 mt-5">
+                    <div class="col-lg-6 col-md-12 mt-2">
 
                         <input type="hidden" name="id_user" value="<?= $akun['id_user']; ?>">
                         <div class="form-group">
@@ -36,6 +36,15 @@
                             <small class="text-danger">
                                 <?= form_error('email'); ?>
                             </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" style="color: black; font-size: 11pt;" class="m-0"><small>Role</small></label>
+                            <select name="role_id" class="form-control form-control-sm  " id="exampleFormControlSelect1">
+                                <option value="0">Role</option>
+                                <?php foreach ($akses as $a) : ?>
+                                    <option value="<?php echo $a->id_role ?>"><?php echo $a->role; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-6">
@@ -63,7 +72,7 @@
                         </button>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <img style="height: 250px; width: 250px;" src="<?= base_url('upload/account/') . $akun['image']; ?>" alt="">
+                        <img style="height: 250px; width: 250px; object-fit: cover;" src="<?= base_url('upload/account/') . $akun['image']; ?>" alt="">
                     </div>
                 </div>
                 <?= form_close(); ?>

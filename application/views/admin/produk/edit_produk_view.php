@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="formGroupExampleInput" style="color: black; font-size: 11pt;" class="m-0"><small>Kategori</small></label>
-                                <select name="id_kategori" class="form-control form-control-sm  " id="exampleFormControlSelect1">
+                                <select name="id_kategori" class="form-control form-control-sm  " id="exampleFormControlSelect1" required>
                                     <option value="0">Kategori</option>
                                     <?php foreach ($kategori as $row) : ?>
                                         <option value="<?php echo $row->id_kategori ?>"><?php echo $row->kategori; ?></option>
@@ -50,7 +50,7 @@
                         <div class="col-8">
                             <div class="form-group purple-border px-5">
                                 <label for="formGroupExampleInput" style="color: black; font-size: 11pt;" class="m-0"><small>Deskripsi Produk</small></label>
-                                <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea4" rows="6"><?= $produk['deskripsi']; ?></textarea>
+                                <textarea class="form-control" name="deskripsi" id="ckeditor" rows="6"><?= $produk['deskripsi']; ?></textarea>
                             </div>
                             <div class="input-group px-5">
                                 <div class="custom-file" style="overflow-y: hidden;">
@@ -59,10 +59,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="gallery mt-3 px-5"></div>
+                                <div class="gallery mt-3 px-5">
+
+                                </div>
                             </div>
                         </div>
-                        <button type="submit" style="font-size: 12pt;" class="mt-1 ml-3 btn btn-primary btn-user btn-small">
+                        <button type="submit" style="font-size: 12pt;" class="mt-1 mb-5 ml-3 btn btn-primary btn-user btn-small">
                             Post
                         </button>
                     </div>
@@ -85,6 +87,7 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
+<script type='text/javascript' src='<?php echo base_url(); ?>assets/ckeditor/ckeditor.js'></script>
 <script>
     $("#navbar-user").remove();
     $("body").attr("id", "page-top");
@@ -114,5 +117,12 @@
     $('#customFile').on('change', function() {
         imagesPreview(this, 'div.gallery');
     });
+
+    var ckeditor = CKEDITOR.replace('ckeditor', {
+        height: '300px',
+    });
+
+    CKEDITOR.disableAutoInline = true;
+    CKEDITOR.inline('editable');
 </script>
 <?php $this->load->view('template/body_bawah') ?>

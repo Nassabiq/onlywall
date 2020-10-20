@@ -41,7 +41,7 @@ class Home extends CI_Controller
 
 	public function showProduk()
 	{
-		$id_produk = $this->uri->segment(3);
+		$id_produk = decrypt_url($this->uri->segment(3));
 		$data = [
 			'title' => "Produk Detail | Only Wall",
 			'produk' => $this->Produk_m->getProdukbyId($id_produk),
@@ -52,7 +52,7 @@ class Home extends CI_Controller
 
 	public function showArtikel()
 	{
-		$id_artikel = $this->uri->segment(3);
+		$id_artikel = decrypt_url($this->uri->segment(3));
 		$data = [
 			'title' => "Artikel Detail | Only Wall",
 			'artikel' => $this->Artikel_m->getArtikelbyId($id_artikel),
@@ -64,7 +64,8 @@ class Home extends CI_Controller
 	public function news()
 	{
 		$data = [
-			'title' => "News | Only Wall"
+			'title' => "News | Only Wall",
+			'artikel' => $this->Artikel_m->getArtikel()
 		];
 
 		$this->load->view('end_user/news_view', $data);

@@ -115,7 +115,7 @@ class Produk extends CI_Controller
                         $dataInfo = $this->upload->data();
                         $configer['image_library'] = 'gd2';
                         $configer['source_image'] = './upload/produk/' . $dataInfo['file_name'];
-                        // $configer['quality'] = '50%';
+                        $configer['quality'] = '50%';
                         $configer['width'] = 1000;
                         // $configer['height'] = ;
 
@@ -211,7 +211,7 @@ class Produk extends CI_Controller
                         $dataInfo = $this->upload->data();
                         $configer['image_library'] = 'gd2';
                         $configer['source_image'] = './upload/produk/' . $dataInfo['file_name'];
-                        // $configer['quality'] = '50%';
+                        $configer['quality'] = '50%';
                         $configer['width'] = 1000;
                         // $configer['height'] = ;
 

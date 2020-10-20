@@ -1,5 +1,4 @@
 <?php $this->load->view('template/body_atas'); ?>
-<?php $this->load->view('template/navbar'); ?>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -34,7 +33,7 @@
                                 <option value="0">Kategori</option>
                                 <?php foreach ($kategori as $row) : ?>
                                     <option value="<?php echo $row->id_kategori ?>"><?php echo $row->kategori; ?></option>
-                                  <?php endforeach; ?>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="custom-file" style="overflow-y: hidden;">

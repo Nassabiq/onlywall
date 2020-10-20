@@ -6,21 +6,21 @@
 
     <!-- Main Content -->
     <div id="content">
-        <div class="container my-5  ">
-            <div class="row">
-                <div class="col-5">
-                    <span>
-                        <img style="width: 600px; height: 300px; object-fit: cover;" src="<?= site_url('/upload/thumbnails/') . $artikel['thumbnail']; ?>" alt="OwArtikel-Image" srcset="">
-                    </span>
-                </div>
-                <div class="col-7">
+        <div class="container mt-2 my-5  ">
+            <img class="w-100" style="height: 400px; object-fit: cover;" src="<?= site_url('/upload/thumbnails/') . $artikel['thumbnail']; ?>" alt="OwArtikel-Image" srcset="">
+            <div class="row mt-3">
+                <div class="col-lg-8 col-md-12">
                     <h1 style="color: black;"><?= $artikel['judul_artikel']; ?></h1>
                     <div class="tgl-publish">
                         <p class="mt-1" style="font-size: 10pt; color: black;"> <b> Di Upload pada :</b> <?= $artikel['tgl_upload']; ?> | <b>Kategori : </b> <?= $artikel['kategori']; ?></p>
                     </div>
-                    <div class="konten mt-2" style="color: black;">
+                    <div class="konten mt-2 pr-5" style="color: black; text-align: justify;
+  text-justify: inter-word;">
                         <?= htmlspecialchars_decode($artikel['konten']); ?>
                     </div>
+                </div>
+                <div class="col-lg-4 col-md-12 mt-5">
+                    <h5>Related Post</h5>
                 </div>
             </div>
         </div>

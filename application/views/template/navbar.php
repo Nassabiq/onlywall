@@ -14,13 +14,13 @@
           <a class="nav-link" href="<?php echo base_url(''); ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('/Home/produk'); ?>">Produk</a>
+          <a class="nav-link" href="<?php echo base_url('Product'); ?>">Produk</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('/Home/news'); ?>">News</a>
+          <a class="nav-link" href="<?php echo base_url('News'); ?>">News</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('/Home/contact'); ?>">Contact Us</a>
+          <a class="nav-link" href="<?php echo base_url('Contact'); ?>">Contact Us</a>
         </li>
       </ul>
 

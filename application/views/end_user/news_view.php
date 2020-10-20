@@ -1,11 +1,26 @@
 <?php $this->load->view('template/body_atas') ?>
 <?php $this->load->view('template/navbar') ?>
-<div class="container mt-3">
-    <h2>News</h2>
-    <div class="col">
-        <div class="row">
-                
-        </div>
+
+<div class="container mt-3 mb-5">
+    <p>
+        <h2>Artikel Terbaru</h2>
+        yang ada di Only Wall
+    </p>
+    <div class="col-lg-8">
+        <?php foreach ($artikel as $a) : ?>
+            <div class="row my-2 p-2" style="background-color: #d1edff;">
+                <div class="col-lg-4">
+                    <img src="<?= base_url('upload/thumbnails/') .  $a->thumbnail; ?>" style="width: 300px; height: 200px; object-fit: cover;" class="card-img" alt="...">
+                </div>
+                <div class="col-lg-8 mt-3">
+                    <a style="text-decoration: none;" href="<?= base_url('/Home/showArtikel/') . encrypt_url($a->id_artikel); ?>">
+                        <h5 class="card-title"><?= $a->judul_artikel; ?></h5>
+                    </a>
+                    <p><?= htmlspecialchars_decode(word_limiter($a->konten, 20)); ?> <small><a href="<?= base_url('/Home/showArtikel/') . encrypt_url($a->id_artikel); ?>">Read More</a></small></p>
+                    <p><small><?= $a->tgl_upload; ?></small></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
 

@@ -22,6 +22,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
+
+    <script>
+        (function(w, d, s, g, js, fs) {
+            g = w.gapi || (w.gapi = {});
+            g.analytics = {
+                q: [],
+                ready: function(f) {
+                    this.q.push(f);
+                }
+            };
+            js = d.createElement(s);
+            fs = d.getElementsByTagName(s)[0];
+            js.src = 'https://apis.google.com/js/platform.js';
+            fs.parentNode.insertBefore(js, fs);
+            js.onload = function() {
+                g.load('analytics');
+            };
+        }(window, document, 'script'));
+    </script>
+
     <style>
         * {
             font-family: 'Poppins', sans-serif;
@@ -112,6 +132,29 @@
         h5,
         h6 {
             overflow-x: visible;
+        }
+
+        .text-sosmed {
+            text-decoration: none;
+        }
+
+        .img-background {
+            width: 42vw;
+        }
+
+        .img-logo {
+            width: 22vw;
+        }
+
+        @media screen and (max-width: 800px) {
+
+            .img-background {
+                width: 90vw;
+            }
+
+            .img-logo {
+                width: 80vw;
+            }
         }
     </style>
 

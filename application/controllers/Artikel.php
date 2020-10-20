@@ -119,7 +119,7 @@ class Artikel extends CI_Controller
 
                     $configer['image_library'] = 'gd2';
                     $configer['source_image'] = $thumbnail['full_path'];
-                    // $configer['quality'] = '50%';
+                    $configer['quality'] = '50%';
                     $configer['width'] = 600;
                     $configer['height'] = 400;
 
@@ -201,7 +201,7 @@ class Artikel extends CI_Controller
 
                         $configer['image_library'] = 'gd2';
                         $configer['source_image'] = $thumbnail['full_path'];
-                        $configer['quality'] = '70%';
+                        $configer['quality'] = '50%';
                         $configer['width'] = 600;
                         $configer['height'] = 400;
 

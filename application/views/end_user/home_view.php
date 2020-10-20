@@ -28,7 +28,7 @@
 						<div class="carousel-item <?= $class; ?>" data-interval="3000">
 							<img src="<?= base_url('upload/thumbnails/') . $arr->thumbnail; ?>" class="d-block w-100" style="height: 550px; object-fit: cover;" alt="Ow-Carousel">
 							<div class="carousel-caption d-none d-md-block">
-								<a style="text-decoration: none;" href="<?= base_url('/Home/showArtikel/') . $arr->id_artikel; ?>">
+								<a style="text-decoration: none;" href="<?= base_url('/Home/showArtikel/') . encrypt_url($arr->id_artikel); ?>">
 									<h4 style="font-weight: bold;"><?= $arr->judul_artikel ?></h4>
 								</a>
 								<p><?= htmlspecialchars_decode(word_limiter($arr->konten, 10)); ?></p>
@@ -150,7 +150,7 @@
 						<div class="hover-link">
 							<p style="font-size: 10pt;"><?= $p->nama_produk; ?></p>
 							<p style="font-weight: bold;"><?= 'Rp. ' . number_format($p->harga); ?></p>
-							<a href="<?= base_url('/Home/showProduk/') . $p->id_produk;  ?>" class="btn btn-primary btn-sm">Lihat Produk</a>
+							<a href="<?= base_url('/Home/showProduk/') . encrypt_url($p->id_produk);  ?>" class="btn btn-primary btn-sm">Lihat Produk</a>
 						</div>
 						<p>
 						</p>
@@ -171,7 +171,7 @@
 									<p style="font-size: 10pt;"><?= $p->nama_produk; ?></p>
 									<p style="font-weight: bold;"><?= 'Rp. ' . number_format($p->harga); ?></p>
 									<div class="mr-2">
-										<a href="<?= base_url('/Home/showProduk/') . $p->id_produk;  ?>" class="btn btn-primary btn-sm mt-1">Lihat Produk</a>
+										<a href="<?= base_url('/Home/showProduk/') . encrypt_url($p->id_produk);  ?>" class="btn btn-primary btn-sm mt-1">Lihat Produk</a>
 										<a class="btn btn-success btn-sm mt-1" href="https://api.whatsapp.com/send?phone=6285773406307" role="button"><i style="vertical-align: middle;" class="mr-2 fab fa-fw fa-whatsapp" aria-hidden="true"></i>Chat WA</a>
 									</div>
 								</div>
@@ -203,7 +203,7 @@
 							</div>
 							<div class="col-md-8">
 								<div class="card-body">
-									<a style="text-decoration: none;" href="<?= base_url('/Home/showArtikel/') . $a->id_artikel; ?>">
+									<a style="text-decoration: none;" href="<?= base_url('/Home/showArtikel/') . encrypt_url($a->id_artikel	); ?>">
 										<h5 class="card-title"><?= $a->judul_artikel; ?></h5>
 									</a>
 									<p class="card-text"><?= htmlspecialchars_decode(word_limiter($a->konten, 10)); ?></p>

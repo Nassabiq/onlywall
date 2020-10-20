@@ -6,7 +6,7 @@
 
         <!-- Main Content -->
         <div id="content">
-            <div class="container my-5">
+            <div class="container mt-1 my-5">
                 <div class="row">
                     <div class="col-4">
                         <!-- carousel -->
@@ -34,7 +34,7 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                        <div class="link-wa mt-2 d-flex justify-content-center">
+                        <div class="link-wa d-flex justify-content-center">
                             <a class="btn btn-success mt-3" href="https://api.whatsapp.com/send?phone=6285773406307" role="button"><i style="vertical-align: middle;" class="mr-2 fab fa-fw fa-whatsapp" aria-hidden="true"></i>Pesan di WhatsApp</a>
                         </div>
                     </div>

@@ -1,5 +1,4 @@
 <?php $this->load->view('template/body_atas'); ?>
-<?php $this->load->view('template/navbar'); ?>
 
 
 <div id="wrapper">

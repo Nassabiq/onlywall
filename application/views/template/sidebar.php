@@ -30,6 +30,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?php echo base_url('Produk'); ?>">Lihat Produk</a>
+                <a class="collapse-item" href="<?php echo base_url('Produk/show_kategori'); ?>">Kategori Produk</a>
                 <a class="collapse-item" href="<?php echo base_url('Produk/add_product'); ?>">Tambah Produk</a>
             </div>
         </div>
@@ -44,6 +45,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?php echo base_url('Artikel'); ?>">Kelola Artikel</a>
+                <a class="collapse-item" href="<?php echo base_url('Artikel/show_kategori'); ?>">Kategori Artikel</a>
                 <a class="collapse-item" href="<?php echo base_url('Artikel/add_artikel'); ?>">Tambah Artikel</a>
             </div>
         </div>

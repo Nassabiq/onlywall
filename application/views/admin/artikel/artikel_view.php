@@ -106,6 +106,13 @@
                             </tbody>
                         <?php endif; ?>
                     </table>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <?= $this->pagination->create_links(); ?>
+                            </p>
+                        </div>
+                    </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -140,7 +147,7 @@
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
+<a class="scroll-to-top rounded" style="overflow-y: hidden;" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
 

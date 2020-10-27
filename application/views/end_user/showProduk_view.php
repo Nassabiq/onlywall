@@ -8,37 +8,30 @@
         <div id="content">
             <div class="container mt-1 my-5">
                 <div class="row">
-                    <div class="col-4">
-                        <!-- carousel -->
+                    <div class="col-lg-4 col-md-12 col-sm-12">
                         <?php
                         $image = json_decode($produk['foto_produk']);
                         ?>
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <?php
-                                $class = ' active';
-                                foreach ($image as $obj) : ?>
-                                    <div class="carousel-item <?= $class; ?>" data-interval="3000">
-                                        <img class="item" style="object-fit: cover; height: 350px; width: 350px;" src="<?= base_url('/upload/produk/') . $obj->image; ?>" alt="OwProduk-Image">
-                                    </div>
-                                <?php
-                                    $class = '';
-                                endforeach; ?>
+                        <div class="splide" id="image">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <?php
+                                    foreach ($image as $obj) : ?>
+                                        <div class="splide__slide d-flex justify-content-center">
+                                            <img class="item" style="object-fit: cover; height: 350px; width: 350px;" src="<?= base_url('/upload/produk/') . $obj->image; ?>" alt="OwProduk-Image">
+                                        </div>
+                                    <?php
+                                    endforeach; ?>
+                                </ul>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
                         </div>
+                        <!-- carousel -->
+
                         <div class="link-wa d-flex justify-content-center">
                             <a class="btn btn-success mt-3" href="https://api.whatsapp.com/send?phone=6285773406307" role="button"><i style="vertical-align: middle;" class="mr-2 fab fa-fw fa-whatsapp" aria-hidden="true"></i>Pesan di WhatsApp</a>
                         </div>
                     </div>
-                    <div class="col-8" style="margin-top: 40px;">
+                    <div class="col-lg-8 col-md-12 col-sm-12" style="margin-top: 40px;">
                         <h3 style="color: black;"><?= $produk['nama_produk']; ?></h3>
                         <h1 style="color: black;">Rp. <?= number_format($produk['harga']); ?></h1>
                         <table>
@@ -66,17 +59,12 @@
                                 </tr>
                             </tbody>
                         </table>
-
-
-                    </div>
-                    <div class="row">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <?php $this->load->view('template/footer'); ?>
 <script>
     $("ion-icon").css("padding-right", "10px");

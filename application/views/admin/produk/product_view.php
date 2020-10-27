@@ -98,32 +98,39 @@
                                             </a>
 
                                             <!-- Delete -->
-                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#produkModal<?= $row->id_produk; ?>">
                                                 <i style="vertical-align: middle;" class="fa fa-fw fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="produkModal<?= $row->id_produk; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel"><b> Apakah Anda ingin menghapusnya? </b></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" style="font-size: 10pt;">
+                                                    Artikel yang dihapus tidak bisa dikembalikan
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                                    <a type="button" href="<?= base_url('Produk/delete_produk/') . $row->id_produk; ?>" class="btn btn-primary btn-sm text-white">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php endforeach; ?>
                             </tbody>
                         <?php endif; ?>
                     </table>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel"><b> Apakah Anda ingin menghapusnya? </b></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body" style="font-size: 10pt;">
-                                    Artikel yang dihapus tidak bisa dikembalikan
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                                    <a type="button" href="<?= base_url('Produk/delete_produk/') . $row->id_produk; ?>" class="btn btn-primary btn-sm text-white">Delete</a>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <?= $this->pagination->create_links(); ?>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -141,7 +148,7 @@
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
+<a class="scroll-to-top rounded" style="overflow-y: hidden;" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
 

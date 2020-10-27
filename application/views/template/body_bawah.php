@@ -1,5 +1,31 @@
 <script>
+    new Splide('#image', {
+        type: 'loop',
+        perPage: 1,
+    }).mount();
+
     $('#owl-1').owlCarousel({
+        loop: true,
+        margin: 10,
+        dots: false,
+        autoHeight: true,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        mouseDrag: false,
+        responsiveClass: true,
+        touchDrag: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
+
+    $('#header').owlCarousel({
         loop: true,
         margin: 10,
         dots: false,

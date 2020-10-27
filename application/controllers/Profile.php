@@ -9,12 +9,14 @@ class Profile extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper('file');
         $this->load->library('image_lib');
+        $this->load->model('Account_m');
     }
     public function index()
     {
         $data = [
             'title' => "Profile | Only Wall",
-            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+            'role' => $this->Account_m->getUser()
         ];
 
         if (!$this->session->userdata('email')) {
@@ -62,7 +64,7 @@ class Profile extends CI_Controller
 
                 $configer['image_library'] = 'gd2';
                 $configer['source_image'] = $image['full_path'];
-                $configer['quality'] = '70%';
+                $configer['quality'] = '50%';
                 $configer['width'] = 600;
                 $configer['height'] = 400;
 
@@ -71,6 +73,8 @@ class Profile extends CI_Controller
                 $this->image_lib->resize();
                 $gambar = $image['file_name'];
 
+                $this->session->unset_userdata('image');
+                $this->session->set_userdata('image', $gambar);
                 $this->db->set(
                     'image',
                     $gambar

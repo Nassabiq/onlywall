@@ -20,7 +20,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 mt-5">
-                    <h5>Related Post</h5>
+                    <h5 class="mb-4">Related Post</h5>
+                    <?php foreach ($similar as $row) : ?>
+                        <?php foreach ($row as $r) :  ?>
+                            <p class="my-1">
+                                <a class="relatedd" style="color: black;" href=" <?= base_url('/Home/showArtikel/') . encrypt_url($r->id_artikel); ?>"> <?= $r->judul_artikel; ?> </a>
+                            </p>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

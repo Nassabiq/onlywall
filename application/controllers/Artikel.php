@@ -35,14 +35,60 @@ class Artikel extends CI_Controller
         $data = [
             'title' => "Article Page | Only Wall",
             'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
-            'artikel_post' => $this->Artikel_m->getArtikel()
+            // 'artikel_post' => $this->Artikel_m->getArtikel()
         ];
 
         if (!$this->session->userdata('email')) {
             # code...
             redirect('OwLogin');
         } else {
+            $this->load->library('pagination');
+            $jumlah_artikel = $this->db->get('artikel_post')->num_rows();
+
+            $config['base_url'] = base_url() . 'Artikel/index';
+            $config['total_rows'] = $jumlah_artikel;
+            $config['per_page'] = 5;
+            $config["num_links"] = 1;
+
+            $config['first_link']       = 'First';
+            $config['last_link']        = 'Last';
+            $config['next_link']        = 'Next';
+            $config['prev_link']        = 'Prev';
+            $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+            $config['full_tag_close']   = '</ul></nav></div>';
+            $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+            $config['num_tag_close']    = '</span></li>';
+            $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+            $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+            $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+            $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+            $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+            $config['prev_tagl_close']  = '</span>Next</li>';
+            $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+            $config['first_tagl_close'] = '</span></li>';
+            $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+            $config['last_tagl_close']  = '</span></li>';
+
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['artikel_post'] = $this->Artikel_m->getArtikel2($config['per_page'], $page);
+
             $this->load->view('admin/artikel/artikel_view', $data);
+        }
+    }
+
+    public function show_kategori()
+    {
+        $data = [
+            'title' => "Kategori Page | Only Wall",
+            'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+            'kategori' => $this->Artikel_m->getkategori()
+        ];
+
+        if (!$this->session->userdata('email')) {
+            redirect('OwLogin');
+        } else {
+            $this->load->view('admin/artikel/kelola_artikel_view', $data);
         }
     }
 
@@ -56,6 +102,18 @@ class Artikel extends CI_Controller
         $this->db->insert('artikel_kategori', $data);
         $this->session->set_flashdata('message', '<div style="font-size: 10pt;" class="text-sm-left text-success alert alert-success" role="alert" >Kategori Baru Berhasil ditambahkan!</div>');
         redirect('Artikel');
+    }
+
+    public function delete_kategori()
+    {
+        $id_kategori = $this->uri->segment(3);
+        $data['kategori'] = $this->db->get_where('artikel_kategori', ['id_kategori' => $id_kategori]);
+
+        $this->db->where('id_kategori', $id_kategori);
+        $this->db->delete('artikel_kategori');
+
+        $this->session->set_flashdata('message', '<div style="font-size: 10pt;" class="text-sm-left text-success alert alert-success" role="alert" >Produk Berhasil dihapus!</div>');
+        redirect('Artikel/show_kategori');
     }
 
     public function showArtikelDetail()

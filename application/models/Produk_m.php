@@ -14,6 +14,7 @@ class Produk_m extends CI_Model
             return false;
         }
     }
+
     public function getProduk()
     {
         $this->db->select('*');
@@ -24,6 +25,35 @@ class Produk_m extends CI_Model
 
         if ($query->num_rows() != 0) {
             return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    public function getProduk2($limit, $start)
+    {
+        $this->db->select('*');
+        $this->db->from('produk');
+        $this->db->join('produk_kategori', 'produk_kategori.id_kategori = produk.id_kategori');
+
+        $query  = $this->db->get('', $limit, $start);
+
+        if ($query->num_rows() != 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+    public function getProdukLength()
+    {
+        $this->db->select('*');
+        $this->db->from('produk');
+        $this->db->join('produk_kategori', 'produk_kategori.id_kategori = produk.id_kategori');
+
+        $query  = $this->db->get();
+
+        if ($query->num_rows() != 0) {
+            return $query->num_rows();
         } else {
             return false;
         }

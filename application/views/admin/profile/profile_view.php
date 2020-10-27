@@ -17,7 +17,11 @@
                 <div class="card mb-3 mt-5" style="max-width: 700px; color: black;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img class="card-img-top" style="width: 200px; height: 200px; object-fit: cover;" src="<?= base_url('upload/account/' . $user['image']); ?>" alt="Profile">
+                            <?php foreach ($role as $r) : ?>
+                                <?php if ($r->image == $user['image']) : ?>
+                                    <img class="card-img-top" style="width: 200px; height: 200px; object-fit: cover;" src="<?= base_url('upload/account/' . $r->image); ?>" alt="Profile">
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

@@ -5,12 +5,19 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="986948871783-fbh6k0jagsf5v2cm1nph92vossmd2igf.apps.googleusercontent.com">
+    <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Lobster+Two:wght@700&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+    <!-- or the reference on CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/addons/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
@@ -21,6 +28,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <link rel="icon" href="<?= base_url() ?>/upload/Logo_Ow.png" type="image/png">
 
 
     <script>
@@ -47,7 +56,9 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 400;
             overflow-x: hidden;
+            box-sizing: border-box;
         }
+
 
         .carousel-caption {
             /* -webkit-text-stroke: 2px white; */
@@ -82,6 +93,17 @@
             transition: .5s ease;
             opacity: 0;
             position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .hover-link2 {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -103,6 +125,21 @@
             cursor: pointer;
         }
 
+        .item1 {
+            background-color: #ebebeb;
+        }
+
+        .item1:hover .image-produk {
+            opacity: 0.2;
+            overflow-y: hidden;
+        }
+
+        .item1:hover>.hover-link2 {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+
         .owl-carousel {
             overflow-y: hidden;
         }
@@ -122,7 +159,13 @@
 
         .link {
             color: black;
+            font-weight: 300;
+            font-size: 10pt;
             text-decoration: none;
+        }
+
+        .relatedd:hover {
+            color: blue;
         }
 
         h1,

@@ -11,9 +11,13 @@
         <div id="content">
             <?php $this->load->view("template/top"); ?>
 
-            <section id="auth-button"></section>
-            <section id="view-selector"></section>
-            <section id="timeline"></section>
+            <div class="container">
+                <!-- The Sign-in button. This will run `queryReports()` on success. -->
+                <p class="g-signin2" data-onsuccess="queryReports"></p>
+
+                <!-- The API response will be printed here. -->
+                <textarea cols="80" rows="20" id="query-output"></textarea>
+            </div>
 
             <!-- End of Topbar -->
         </div>
@@ -29,74 +33,41 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
+
+
 <script>
-    (function(w, d, s, g, js, fjs) {
-        g = w.gapi || (w.gapi = {});
-        g.analytics = {
-            q: [],
-            ready: function(cb) {
-                this.q.push(cb)
+    // Replace with your view ID.
+    var VIEW_ID = '231578076';
+
+    // Query the API and print the results to the page.
+    function queryReports() {
+        gapi.client.request({
+            path: '/v4/reports:batchGet',
+            root: 'https://analyticsreporting.googleapis.com/',
+            method: 'POST',
+            body: {
+                reportRequests: [{
+                    viewId: VIEW_ID,
+                    dateRanges: [{
+                        startDate: '7daysAgo',
+                        endDate: 'today'
+                    }],
+                    metrics: [{
+                        expression: 'ga:sessions'
+                    }]
+                }]
             }
-        };
-        js = d.createElement(s);
-        fjs = d.getElementsByTagName(s)[0];
-        js.src = 'https://apis.google.com/js/platform.js';
-        fjs.parentNode.insertBefore(js, fjs);
-        js.onload = function() {
-            g.load('analytics')
-        };
-    }(window, document, 'script'));
+        }).then(displayResults, console.error.bind(console));
+    }
+
+    function displayResults(response) {
+        var formattedJson = JSON.stringify(response.result, null, 2);
+        document.getElementById('query-output').value = formattedJson;
+    }
 </script>
-<script>
-    gapi.analytics.ready(function() {
 
-        // Step 3: Authorize the user.
-
-        var CLIENT_ID = '986948871783-fbh6k0jagsf5v2cm1nph92vossmd2igf.apps.googleusercontent.com';
-
-        gapi.analytics.auth.authorize({
-            container: 'auth-button',
-            clientid: CLIENT_ID,
-        });
-
-        // Step 4: Create the view selector.
-
-        var viewSelector = new gapi.analytics.ViewSelector({
-            container: 'view-selector'
-        });
-
-        // Step 5: Create the timeline chart.
-
-        var timeline = new gapi.analytics.googleCharts.DataChart({
-            reportType: 'ga',
-            query: {
-                'dimensions': 'ga:date',
-                'metrics': 'ga:sessions',
-                'start-date': '30daysAgo',
-                'end-date': 'yesterday',
-            },
-            chart: {
-                type: 'LINE',
-                container: 'timeline'
-            }
-        });
-
-        // Step 6: Hook up the components to work together.
-
-        gapi.analytics.auth.on('success', function(response) {
-            viewSelector.execute();
-        });
-
-        viewSelector.on('change', function(ids) {
-            var newIds = {
-                query: {
-                    ids: ids
-                }
-            }
-            timeline.set(newIds).execute();
-        });
-    });
-</script>
+<!-- Load the JavaScript API client and Sign-in library. -->
+<script src="https://apis.google.com/js/client:platform.js"></script>
 <script>
     $("#navbar-user").remove();
     $("body").attr("id", "page-top");

@@ -1,9 +1,4 @@
 <script>
-    new Splide('#image', {
-        type: 'loop',
-        perPage: 1,
-    }).mount();
-
     $('#owl-1').owlCarousel({
         loop: true,
         margin: 10,
@@ -78,6 +73,13 @@
         items: 3,
         touchDrag: false
     });
+
+    new Splide('#image', {
+        type: 'loop',
+        perPage: 1,
+    }).mount();
+
+    new Splide('#homecarousel').mount();
 </script>
 
 <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
